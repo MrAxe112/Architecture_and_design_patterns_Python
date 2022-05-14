@@ -18,12 +18,9 @@ class Framework:
             view = Error404PageNotFound()
 
         request = {}
-        urls = self.routes
-        print(urls)
         for front in self.fronts:
             front(request)
         code, body = view(request)
-        print(request)
 
         start_response(code, [('Content-Type', 'text/html')])
         return [body.encode('utf-8')]
